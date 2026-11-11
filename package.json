@@ -1,0 +1,23 @@
+{
+  "name": "@local/dsh-hyperframes",
+  "version": "0.9.30",
+  "private": true,
+  "description": "Adds the six core HyperFrames agent skills (HTML-to-MP4 video authoring via the hyperframes CLI) as a toggleable plugin.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "exports": {
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "skills"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

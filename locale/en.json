@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "HyperFrames skills",
+    "description": "Adds the six core HyperFrames agent skills — author and render HTML-to-MP4 videos with the hyperframes CLI. Disable to hide them from the skill catalog."
+  }
+}

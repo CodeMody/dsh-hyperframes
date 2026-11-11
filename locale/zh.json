@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "HyperFrames 技能",
+    "description": "加载六个 HyperFrames 核心智能体技能——使用 hyperframes CLI 编写并渲染 HTML→MP4 视频。禁用后可从技能目录中隐藏。"
+  }
+}

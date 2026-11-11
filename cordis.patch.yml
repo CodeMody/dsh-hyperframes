@@ -1,0 +1,30 @@
+# HyperFrames core agent skills
+#
+# Adds a second @deepseek-ai/dsh-skill-filesystem instance whose only scanned
+# root is this bundle's `skills/` directory — the six core HyperFrames skills
+# vendored from the HyperFrames desktop app (CLI 0.9.30). The unique
+# providerName keeps it apart from the default `filesystem` provider, so the
+# default project/user roots — and every other skill — are untouched.
+#
+# Placement: a plain Host-level row. The `skills` service files host-scope
+# registrations into its GLOBAL layer, and agent reads merge the global layer
+# with the viewing preset's own layer — so this one row feeds the skills to
+# sessions of every agent preset (this profile runs the `cordis` preset) and
+# survives preset switches without restating any preset's plugin list.
+#
+# bundledSkillDir is a literal absolute path on purpose: the plugin Config
+# context is not guaranteed to see process/env, so an earlier `!!js`
+# DSH_PROFILE_DIR expression risked resolving to undefined and registering a
+# rootless provider that silently scanned nothing. If this profile directory
+# ever moves, update the path here.
+#
+# Disable this bundle in the Plugins manager to drop exactly these six skills
+# from sessions started afterwards; existing sessions keep what they started
+# with.
+- insert:
+    - id: hyperframes-skills
+      name: '@deepseek-ai/dsh-skill-filesystem'
+      config:
+        providerName: hyperframes
+        includeDefaultRoots: false
+        bundledSkillDir: 'C:\Users\CodeMody Laptop\.dsh\profiles\desktop\node_modules\@local\dsh-hyperframes\skills'
