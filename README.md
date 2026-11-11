@@ -1,6 +1,6 @@
 # dsh-hyperframes
 
-A config-only plugin bundle for [DeepSeek Harness](https://github.com/deepseek-ai) (DSH) that adds the six core [HyperFrames](https://github.com/heygen-com/hyperframes) agent skills as a single toggle in the Plugins manager. No JavaScript, nothing to build — just a Cordis patch row that mounts a dedicated skill scanner over this package's `skills/` folder.
+A config-only plugin bundle for [DeepSeek Harness](https://github.com/deepseek-ai) (DSH) that adds the six core [HyperFrames](https://github.com/heygen-com/hyperframes) agent skills as a single toggle in the Plugins manager. Nothing to build — a Cordis patch row mounts a dedicated skill scanner over this package's `skills/` folder, and a no-op `apply(ctx)` entry module (`index.js`) keeps the package aligned with the DSH plugin spec.
 
 HyperFrames is HeyGen's "write HTML, render video" system: agents author compositions as HTML + CSS + a little JS, and the `hyperframes` CLI renders them to MP4 with headless Chrome. These skills teach an agent how to drive it.
 
@@ -17,15 +17,30 @@ HyperFrames is HeyGen's "write HTML, render video" system: agents author composi
 
 ## Install
 
-In DSH, install this repo as a plugin bundle (it works exactly like other `github:`-sourced bundles):
+In DSH, install this repo as a plugin bundle — full CLI command:
 
 ```
-github:CodeMody/dsh-hyperframes
+dsh plugin --profile desktop add github:CodeMody/dsh-hyperframes
 ```
 
-DSH pulls it via pnpm into the profile's `node_modules`, and the skills appear in agent sessions live — no restart. Disabling the bundle removes exactly these six skills again.
+Or paste `github:CodeMody/dsh-hyperframes` into the Plugins manager's install
+field (works exactly like other `github:`-sourced bundles). DSH pulls it via
+pnpm into the profile's `node_modules`, and the skills appear in agent sessions
+live — no restart. Disabling the bundle removes exactly these six skills again.
 
-> **Note:** the patch mounts the skills from a **literal absolute path** into the `desktop` profile (`…\.dsh\profiles\desktop\node_modules\@local\dsh-hyperframes\skills`) rather than a profile-relative one. If you rename the profile or move `.dsh`, update `bundledSkillDir` in [`cordis.patch.yml`](cordis.patch.yml).
+> **Note:** the patch mounts the skills from an absolute path into the
+> `desktop` profile (`%USERPROFILE%\.dsh\profiles\desktop\node_modules\@local\dsh-hyperframes\skills`,
+> built by a `!!js` expression with a literal fallback). If you rename the
+> profile or move `.dsh`, update `bundledSkillDir` in
+> [`cordis.patch.yml`](cordis.patch.yml).
+
+## Compatibility
+
+- **DSH:** `0.2.2-rc.1`, Windows `desktop` profile.
+- **Runtime:** the skills call the `hyperframes` CLI via `npx` — Node ≥ 22 is
+  required; the CLI itself is not bundled (see below).
+- **License:** Apache-2.0 for both the vendored skills (© HeyGen) and the DSH
+  packaging ([LICENSE](LICENSE)).
 
 ## Provenance
 

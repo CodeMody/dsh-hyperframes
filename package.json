@@ -4,12 +4,30 @@
   "private": true,
   "description": "Adds the six core HyperFrames agent skills (HTML-to-MP4 video authoring via the hyperframes CLI) as a toggleable plugin.",
   "license": "Apache-2.0",
+  "author": "CodeMody",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeMody/dsh-hyperframes.git"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "hyperframes",
+    "heygen",
+    "video",
+    "skill"
+  ],
   "type": "module",
+  "main": "./index.js",
   "exports": {
+    ".": "./index.js",
     "./locale/*.json": "./locale/*.json",
     "./icon": "./icon.svg"
   },
   "files": [
+    "README.md",
+    "index.js",
     "cordis.patch.yml",
     "locale/*.json",
     "icon.svg",
