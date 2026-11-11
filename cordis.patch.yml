@@ -28,4 +28,4 @@
       config:
         providerName: hyperframes
         includeDefaultRoots: false
-        bundledSkillDir: !!js (process.env.USERPROFILE || 'C:\\Users\\CodeMody Laptop') + '\\.dsh\\profiles\\desktop\\node_modules\\@local\\dsh-hyperframes\\skills'
+        bundledSkillDir: !!js (process.env.USERPROFILE || 'C:\\Users\\CodeMody Laptop') + '\\.dsh\\profiles\\desktop\\node_modules\\@codemody\\dsh-hyperframes\\skills'

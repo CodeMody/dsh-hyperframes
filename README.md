@@ -20,16 +20,16 @@ HyperFrames is HeyGen's "write HTML, render video" system: agents author composi
 In DSH, install this repo as a plugin bundle — full CLI command:
 
 ```
-dsh plugin --profile desktop add github:CodeMody/dsh-hyperframes
+dsh plugin --profile desktop add @codemody/dsh-hyperframes
 ```
 
-Or paste `github:CodeMody/dsh-hyperframes` into the Plugins manager's install
-field (works exactly like other `github:`-sourced bundles). DSH pulls it via
+Or paste `@codemody/dsh-hyperframes` (npm) or `github:CodeMody/dsh-hyperframes`
+(source) into the Plugins manager's install field. DSH pulls it via
 pnpm into the profile's `node_modules`, and the skills appear in agent sessions
 live — no restart. Disabling the bundle removes exactly these six skills again.
 
 > **Note:** the patch mounts the skills from an absolute path into the
-> `desktop` profile (`%USERPROFILE%\.dsh\profiles\desktop\node_modules\@local\dsh-hyperframes\skills`,
+> `desktop` profile (`%USERPROFILE%\.dsh\profiles\desktop\node_modules\@codemody\dsh-hyperframes\skills`,
 > built by a `!!js` expression with a literal fallback). If you rename the
 > profile or move `.dsh`, update `bundledSkillDir` in
 > [`cordis.patch.yml`](cordis.patch.yml).
