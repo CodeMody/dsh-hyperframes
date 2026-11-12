@@ -17,10 +17,11 @@ HyperFrames is HeyGen's "write HTML, render video" system: agents author composi
 
 ## Install
 
-In DSH, install this repo as a plugin bundle — full CLI command:
+In DSH, install this repo as a plugin bundle — full CLI command (desktop app or web app):
 
 ```
 dsh plugin --profile desktop add @codemody/dsh-hyperframes
+dsh plugin --profile web add @codemody/dsh-hyperframes
 ```
 
 Or paste `@codemody/dsh-hyperframes` (npm) or `github:CodeMody/dsh-hyperframes`
@@ -31,12 +32,15 @@ live — no restart. Disabling the bundle removes exactly these six skills again
 > **Note:** the patch mounts the skills from an absolute path into the
 > `desktop` profile (`%USERPROFILE%\.dsh\profiles\desktop\node_modules\@codemody\dsh-hyperframes\skills`,
 > built by a `!!js` expression with a literal fallback). If you rename the
-> profile or move `.dsh`, update `bundledSkillDir` in
+> profile, move `.dsh`, or install into the **`web`** profile, swap the
+> `desktop` segment in `bundledSkillDir` in
 > [`cordis.patch.yml`](cordis.patch.yml).
 
 ## Compatibility
 
-- **DSH:** `0.2.2-rc.1`, Windows `desktop` profile.
+- **DSH:** `0.2.2-rc.1`, Windows; `bundledSkillDir` resolves from
+  `%USERPROFILE%` and targets the `desktop` profile — for the `web` profile
+  (or a renamed one) swap the `desktop` segment in that path.
 - **Runtime:** the skills call the `hyperframes` CLI via `npx` — Node ≥ 22 is
   required; the CLI itself is not bundled (see below).
 - **License:** Apache-2.0 for both the vendored skills (© HeyGen) and the DSH
