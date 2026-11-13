@@ -24,8 +24,8 @@ dsh plugin --profile desktop add @codemody/dsh-hyperframes
 dsh plugin --profile web add @codemody/dsh-hyperframes
 ```
 
-Or paste `@codemody/dsh-hyperframes` (npm) or `github:CodeMody/dsh-hyperframes`
-(source) into the Plugins manager's install field. DSH pulls it via
+Or paste the package name `@codemody/dsh-hyperframes` into the Plugins manager's
+install field. DSH pulls it via
 pnpm into the profile's `node_modules`, and the skills appear in agent sessions
 live — no restart. Disabling the bundle removes exactly these six skills again.
 
